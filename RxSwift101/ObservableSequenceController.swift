@@ -1,0 +1,110 @@
+//
+//  ObservableSequenceController.swift
+//  RxSwift101
+//
+//  Created by Siddarth Kalra on 2018-12-05.
+//  Copyright © 2018 Siddarth Kalra. All rights reserved.
+//
+
+import UIKit
+import RxSwift
+
+class ObservableSequenceController: UIViewController {
+
+    var rxExample: RxExample!
+    let factory = ObservableFactory()
+    let subjectFactory = SubjectFactory()
+    var lastIndex: Int = 0
+    var errorOcurred = false
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        title = String(describing: rxExample!)
+
+        getMainObservable()
+            .subscribe { [unowned self] event in
+                switch event {
+                case .next(let datum):
+                    let color: UIColor = datum.element == "ERR" ? .red : .blue
+                    if datum.element == "ERR" {
+                        self.errorOcurred = true
+                    }
+
+                    self.makeViewWithName(datum.element, atIndex: datum.index, color: color)
+                    self.lastIndex = datum.index
+                case .error(let error):
+                    self.errorOcurred = true
+                    self.makeViewWithName(error.localizedDescription, atIndex: self.lastIndex + 1, color: .red)
+                case .completed:
+                    if self.errorOcurred {
+                        return
+                    }
+
+                    self.makeViewWithName("COM", atIndex: self.lastIndex + 1, textColor: .black, color: .green)
+                }
+
+            }.disposed(by: factory.disposeBag)
+    }
+
+}
+
+private extension ObservableSequenceController {
+
+    func getMainObservable() -> Observable<(index: Int, element: String)> {
+        var observ: Observable<String>!
+
+        switch rxExample! {
+        case .observeAllEventsTogether:
+            observ = factory.observeAllEventsTogether()
+        case .observeAllEventsSeparately:
+            observ = factory.observeAllEventsSeparately()
+        case .sequenceWithError:
+            observ = factory.sequenceWithError()
+        case .publishSubjectExample:
+            observ = subjectFactory.publishSubjectExample()
+        case .behaviorSubjectExample:
+            observ = subjectFactory.behaviorSubjectExample()
+        case .replaySubjectExample:
+            observ = subjectFactory.replaySubjectExample()
+        case .variableExample:
+            observ = subjectFactory.variableExample()
+        }
+
+        let delay = Observable<Int>.interval(1.5, scheduler: MainScheduler.instance)
+        let mainObservable = observ.catchErrorJustReturn("ERR")
+
+        return Observable.zip(delay, mainObservable) { (_, mainValue) -> String in
+            return mainValue
+            }
+            .enumerated()
+    }
+
+    func makeViewWithName(_ name: String, atIndex index: Int, textColor: UIColor = .white, color: UIColor = .blue) {
+        let yPos: CGFloat = 100
+        let superViewWidth = view.frame.size.width
+        let viewSize = CGSize(width: 40, height: 40)
+        let startFrame = CGRect(x: superViewWidth, y: yPos, width: viewSize.width, height: viewSize.height)
+
+        let smallSquare = UIView(frame: startFrame)
+        smallSquare.backgroundColor = color
+        view.addSubview(smallSquare)
+
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: viewSize.width, height: viewSize.height))
+        label.text = name
+        label.textColor = textColor
+        label.textAlignment = .center
+        smallSquare.addSubview(label)
+
+        let padding: CGFloat = 5
+        let xPosDelta = (viewSize.width + padding) * CGFloat(index)
+        smallSquare.animateTo(frame: CGRect(x: padding + xPosDelta, y: yPos, width: viewSize.width, height: viewSize.height), withDuration: 1.5)
+    }
+
+}
+
