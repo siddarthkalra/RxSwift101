@@ -94,6 +94,10 @@ private extension ObservableSequenceController {
             .enumerated()
     }
 
+}
+
+private extension ObservableSequenceController {
+
     func makeViewWithName(_ name: String, atIndex index: Int, textColor: UIColor = .white, color: UIColor = .blue) {
         let yPos: CGFloat = 100
         let superViewWidth = view.frame.size.width
