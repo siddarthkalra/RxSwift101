@@ -89,10 +89,9 @@ private extension ObservableSequenceController {
         let delay = Observable<Int>.interval(1.5, scheduler: MainScheduler.instance)
         let mainObservable = observ.catchErrorJustReturn("ERR")
 
-        return Observable.zip(delay, mainObservable) { (_, mainValue) -> String in
-            return mainValue
-        }
-        .enumerated()
+        return Observable
+            .zip(delay, mainObservable) { $1 }
+            .enumerated()
     }
 
     func makeViewWithName(_ name: String, atIndex index: Int, textColor: UIColor = .white, color: UIColor = .blue) {
