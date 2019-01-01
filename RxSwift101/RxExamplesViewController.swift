@@ -9,19 +9,9 @@
 import UIKit
 import RxSwift
 
-enum RxExample: String {
-    case observeAllEventsTogether = "Observable Sequence, all events together"
-    case observeAllEventsSeparately = "Observable Sequence, all events separately"
-    case sequenceWithError = "Observable Sequence with Error"
-    case publishSubjectExample = "Publish Subject"
-    case behaviorSubjectExample = "Behavior Subject"
-    case replaySubjectExample = "Replay Subject"
-    case variableExample = "Variable"
-    case publishRelayExample = "Publish Relay"
-    case behaviorRelayExample = "Behavior Relay"
-}
-
 class RxExamplesViewController: UITableViewController {
+
+    private let cellID = "cellID"
 
     let rxExampleSections = ["Observables", "Subjects", "Relays"]
     let rxExamples: [[RxExample]] = [
@@ -33,7 +23,7 @@ class RxExamplesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Rx Examples"
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellID")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -50,7 +40,7 @@ class RxExamplesViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let selectedExample = rxExamples[indexPath.section][indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         cell.textLabel?.text = selectedExample.rawValue
         cell.accessoryType = .disclosureIndicator
 
