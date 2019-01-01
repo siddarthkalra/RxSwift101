@@ -12,8 +12,11 @@ import RxSwift
 class ObservableSequenceController: UIViewController {
 
     var rxExample: RxExample!
+
     let factory = ObservableFactory()
     let subjectFactory = SubjectFactory()
+    let relayFactory = RelayFactory()
+
     var lastIndex: Int = 0
     var errorOcurred = false
 
@@ -26,7 +29,14 @@ class ObservableSequenceController: UIViewController {
         super.viewWillAppear(animated)
 
         title = String(describing: rxExample!)
+        setupMainObservable()
+    }
 
+}
+
+private extension ObservableSequenceController {
+
+    func setupMainObservable()  {
         getMainObservable()
             .subscribe { [unowned self] event in
                 switch event {
@@ -52,10 +62,6 @@ class ObservableSequenceController: UIViewController {
             }.disposed(by: factory.disposeBag)
     }
 
-}
-
-private extension ObservableSequenceController {
-
     func getMainObservable() -> Observable<(index: Int, element: String)> {
         var observ: Observable<String>!
 
@@ -74,6 +80,10 @@ private extension ObservableSequenceController {
             observ = subjectFactory.replaySubjectExample()
         case .variableExample:
             observ = subjectFactory.variableExample()
+        case .publishRelayExample:
+            observ = relayFactory.publishRelayExample().asObservable()
+        case .behaviorRelayExample:
+            observ = relayFactory.behaviorRelayExample().asObservable()
         }
 
         let delay = Observable<Int>.interval(1.5, scheduler: MainScheduler.instance)
@@ -81,8 +91,8 @@ private extension ObservableSequenceController {
 
         return Observable.zip(delay, mainObservable) { (_, mainValue) -> String in
             return mainValue
-            }
-            .enumerated()
+        }
+        .enumerated()
     }
 
     func makeViewWithName(_ name: String, atIndex index: Int, textColor: UIColor = .white, color: UIColor = .blue) {

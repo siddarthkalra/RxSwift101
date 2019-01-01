@@ -17,11 +17,13 @@ enum RxExample: String {
     case behaviorSubjectExample
     case replaySubjectExample
     case variableExample
+    case publishRelayExample
+    case behaviorRelayExample
 }
 
 class RxExamplesViewController: UITableViewController {
 
-    let rxExamples: [RxExample] = [.observeAllEventsTogether, .observeAllEventsSeparately, .sequenceWithError, .publishSubjectExample, .behaviorSubjectExample, .replaySubjectExample, .variableExample]
+    let rxExamples: [RxExample] = [.observeAllEventsTogether, .observeAllEventsSeparately, .sequenceWithError, .publishSubjectExample, .behaviorSubjectExample, .replaySubjectExample, .variableExample, .publishRelayExample, .behaviorRelayExample]
 
     override func viewDidLoad() {
         super.viewDidLoad()
