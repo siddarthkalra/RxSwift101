@@ -18,7 +18,7 @@ class ObservableFactory {
     func observeAllEventsTogether() -> Observable<String> {
         let observable = Observable.of("A", "B", "C")
 
-        _ = observable.subscribe { event in
+        observable.subscribe { event in
             print(event)
         }.disposed(by: disposeBag)
 
@@ -28,7 +28,7 @@ class ObservableFactory {
     func observeAllEventsSeparately() -> Observable<String> {
         let observable = Observable.of("1", "2", "3", "4")
 
-        _ = observable.subscribe(onNext: { (datum) in
+        observable.subscribe(onNext: { (datum) in
             print("datum: \(datum)")
         }, onError: { (error) in
             print("error: \(error)")
@@ -45,7 +45,7 @@ class ObservableFactory {
 
         let observableZipped = Observable.concat([observable, observableError])
 
-        _ = observableZipped.subscribe(onNext: { (datum) in
+        observableZipped.subscribe(onNext: { (datum) in
             print("datum: \(datum)")
         }, onError: { (error) in
             print("error: \(error)")

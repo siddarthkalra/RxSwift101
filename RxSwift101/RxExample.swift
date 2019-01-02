@@ -16,5 +16,5 @@ enum RxExample: String {
     case variableExample = "Variable"
     case publishRelayExample = "Publish Relay"
     case behaviorRelayExample = "Behavior Relay"
-    case mergeFilterExample = "Merge and Filter Observable Sequence"
+    case mergeFilterExample = "Merge and Filter"
 }
