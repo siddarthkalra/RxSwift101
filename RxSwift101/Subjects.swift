@@ -9,9 +9,7 @@
 import Foundation
 import RxSwift
 
-class SubjectFactory {
-
-    let disposeBag = DisposeBag()
+extension ObservableFactory {
 
     func publishSubjectExample() -> PublishSubject<String> {
         let subject = PublishSubject<String>()

@@ -10,9 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class RelayFactory {
-
-    let disposeBag = DisposeBag()
+extension ObservableFactory {
 
     func publishRelayExample() -> PublishRelay<String> {
         let relay = PublishRelay<String>()

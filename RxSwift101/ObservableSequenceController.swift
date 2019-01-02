@@ -14,9 +14,6 @@ class ObservableSequenceController: UIViewController {
     var rxExample: RxExample!
 
     let factory = ObservableFactory()
-    let subjectFactory = SubjectFactory()
-    let relayFactory = RelayFactory()
-    let operatorFactory = OperatorFactory()
 
     var lastIndex: Int = 0
     var errorOcurred = false
@@ -74,19 +71,19 @@ private extension ObservableSequenceController {
         case .sequenceWithError:
             observ = factory.sequenceWithError()
         case .publishSubjectExample:
-            observ = subjectFactory.publishSubjectExample()
+            observ = factory.publishSubjectExample()
         case .behaviorSubjectExample:
-            observ = subjectFactory.behaviorSubjectExample()
+            observ = factory.behaviorSubjectExample()
         case .replaySubjectExample:
-            observ = subjectFactory.replaySubjectExample()
+            observ = factory.replaySubjectExample()
         case .variableExample:
-            observ = subjectFactory.variableExample()
+            observ = factory.variableExample()
         case .publishRelayExample:
-            observ = relayFactory.publishRelayExample().asObservable()
+            observ = factory.publishRelayExample().asObservable()
         case .behaviorRelayExample:
-            observ = relayFactory.behaviorRelayExample().asObservable()
+            observ = factory.behaviorRelayExample().asObservable()
         case .mergeFilterExample:
-            observ = operatorFactory.mergeFilterExample()
+            observ = factory.mergeFilterExample()
         }
 
         let delay = Observable<Int>.interval(1.5, scheduler: MainScheduler.instance)

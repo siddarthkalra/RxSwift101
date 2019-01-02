@@ -9,9 +9,7 @@
 import Foundation
 import RxSwift
 
-class OperatorFactory {
-
-    let disposeBag = DisposeBag()
+extension ObservableFactory {
 
     func mergeFilterExample() -> Observable<String> {
 
