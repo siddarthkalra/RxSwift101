@@ -61,7 +61,7 @@ private extension ObservableSequenceController {
     }
 
     func getMainObservable() -> Observable<(index: Int, element: String)> {
-        var observ: Observable<String>!
+        let observ: Observable<String>
 
         switch rxExample! {
         case .observeAllEventsTogether:
