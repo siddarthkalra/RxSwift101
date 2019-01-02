@@ -13,11 +13,12 @@ class RxExamplesViewController: UITableViewController {
 
     private let cellID = "cellID"
 
-    let rxExampleSections = ["Observables", "Subjects", "Relays"]
+    let rxExampleSections = ["Observables", "Subjects", "Relays", "Operators"]
     let rxExamples: [[RxExample]] = [
         [.observeAllEventsTogether, .observeAllEventsSeparately, .sequenceWithError],
         [.publishSubjectExample, .behaviorSubjectExample, .replaySubjectExample, .variableExample],
-        [.publishRelayExample, .behaviorRelayExample]
+        [.publishRelayExample, .behaviorRelayExample],
+        [.mergeFilterExample]
     ]
 
     override func viewDidLoad() {

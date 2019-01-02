@@ -10,6 +10,7 @@
 		C701A90F21BCB72400AACD37 /* Subjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C701A90E21BCB72400AACD37 /* Subjects.swift */; };
 		C75FA6D021D92FD600351961 /* Relays.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75FA6CF21D92FD600351961 /* Relays.swift */; };
 		C75FA6D221DB041200351961 /* RxExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75FA6D121DB041200351961 /* RxExample.swift */; };
+		C75FA6D421DC4FE400351961 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75FA6D321DC4FE400351961 /* Operators.swift */; };
 		C7A9217521BA13CD00F04EEA /* RxExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9217421BA13CD00F04EEA /* RxExamplesViewController.swift */; };
 		C7A9217721BA1A7D00F04EEA /* UIView+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9217621BA1A7D00F04EEA /* UIView+Animate.swift */; };
 		C7A9CDBA21B8A1E900C9B3E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9CDB921B8A1E900C9B3E7 /* AppDelegate.swift */; };
@@ -63,6 +64,7 @@
 		C701A90E21BCB72400AACD37 /* Subjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subjects.swift; sourceTree = "<group>"; };
 		C75FA6CF21D92FD600351961 /* Relays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relays.swift; sourceTree = "<group>"; };
 		C75FA6D121DB041200351961 /* RxExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExample.swift; sourceTree = "<group>"; };
+		C75FA6D321DC4FE400351961 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		C7A9217421BA13CD00F04EEA /* RxExamplesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExamplesViewController.swift; sourceTree = "<group>"; };
 		C7A9217621BA1A7D00F04EEA /* UIView+Animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animate.swift"; sourceTree = "<group>"; };
 		C7A9CDB621B8A1E900C9B3E7 /* RxSwift101.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwift101.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +118,7 @@
 				C7A9CDFA21B8A4E800C9B3E7 /* Observables.swift */,
 				C701A90E21BCB72400AACD37 /* Subjects.swift */,
 				C75FA6CF21D92FD600351961 /* Relays.swift */,
+				C75FA6D321DC4FE400351961 /* Operators.swift */,
 			);
 			name = Factories;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				C75FA6D021D92FD600351961 /* Relays.swift in Sources */,
 				C7A9CDBA21B8A1E900C9B3E7 /* AppDelegate.swift in Sources */,
 				C7A9CDFB21B8A4E800C9B3E7 /* Observables.swift in Sources */,
+				C75FA6D421DC4FE400351961 /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
