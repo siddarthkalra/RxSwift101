@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Rx Examples View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="enF-fi-Rqa">
             <objects>
-                <tableViewController id="nYL-oU-PsM" customClass="RxExamplesViewController" customModule="RxSwift101" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="nYL-oU-PsM" customClass="MainViewController" customModule="RxSwift101" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="o6b-2T-8Ys">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
