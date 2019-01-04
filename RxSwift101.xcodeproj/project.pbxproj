@@ -148,7 +148,7 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		C75FA6D521DC56A300351961 /* MVVM */ = {
+		C75FA6E221DF041F00351961 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
 				C75FA6D621DC56C000351961 /* RegisterViewController.swift */,
@@ -156,7 +156,7 @@
 				C75FA6DE21DDA79700351961 /* MenuItemPickerViewController.swift */,
 				C75FA6E021DDA7E500351961 /* OrderCartViewController.swift */,
 			);
-			name = MVVM;
+			path = MVVM;
 			sourceTree = "<group>";
 		};
 		C7A9CDAD21B8A1E900C9B3E7 = {
@@ -181,7 +181,7 @@
 		C7A9CDB821B8A1E900C9B3E7 /* RxSwift101 */ = {
 			isa = PBXGroup;
 			children = (
-				C75FA6D521DC56A300351961 /* MVVM */,
+				C75FA6E221DF041F00351961 /* MVVM */,
 				C75FA6CD21D5C2A300351961 /* UI */,
 				C75FA6CC21D5C28F00351961 /* Factories */,
 				C7A9CDB921B8A1E900C9B3E7 /* AppDelegate.swift */,
