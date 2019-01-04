@@ -42,7 +42,7 @@ class RxExamplesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let selectedExample = rxExamples[indexPath.section][indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        cell.textLabel?.text = selectedExample.rawValue
+        cell.textLabel?.text = String(describing: selectedExample)
         cell.accessoryType = .disclosureIndicator
 
         return cell

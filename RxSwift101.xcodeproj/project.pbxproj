@@ -124,7 +124,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C75FA6CC21D5C28F00351961 /* Factories */ = {
+		C75FA6CC21D5C28F00351961 /* ObservableFactory */ = {
 			isa = PBXGroup;
 			children = (
 				C7A9CDFA21B8A4E800C9B3E7 /* Observables.swift */,
@@ -132,7 +132,7 @@
 				C75FA6CF21D92FD600351961 /* Relays.swift */,
 				C75FA6D321DC4FE400351961 /* Operators.swift */,
 			);
-			name = Factories;
+			name = ObservableFactory;
 			sourceTree = "<group>";
 		};
 		C75FA6CD21D5C2A300351961 /* UI */ = {
@@ -183,7 +183,7 @@
 			children = (
 				C75FA6E221DF041F00351961 /* MVVM */,
 				C75FA6CD21D5C2A300351961 /* UI */,
-				C75FA6CC21D5C28F00351961 /* Factories */,
+				C75FA6CC21D5C28F00351961 /* ObservableFactory */,
 				C7A9CDB921B8A1E900C9B3E7 /* AppDelegate.swift */,
 				C7A9CDBD21B8A1E900C9B3E7 /* Main.storyboard */,
 				C7A9CDC021B8A1EC00C9B3E7 /* Assets.xcassets */,

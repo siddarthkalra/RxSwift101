@@ -11,10 +11,8 @@ import RxSwift
 
 class ObservableSequenceController: UIViewController {
 
+    let disposeBag = DisposeBag()
     var rxExample: RxExample!
-
-    let factory = ObservableFactory()
-
     var lastIndex: Int = 0
     var errorOcurred = false
 
@@ -57,34 +55,12 @@ private extension ObservableSequenceController {
                     self.makeViewWithName("COM", atIndex: self.lastIndex + 1, textColor: .black, color: .green)
                 }
 
-            }.disposed(by: factory.disposeBag)
+            }.disposed(by: disposeBag)
     }
 
     func getMainObservable() -> Observable<(index: Int, element: String)> {
-        let observ: Observable<String>
-
-        switch rxExample! {
-        case .observeAllEventsTogether:
-            observ = factory.observeAllEventsTogether()
-        case .observeAllEventsSeparately:
-            observ = factory.observeAllEventsSeparately()
-        case .sequenceWithError:
-            observ = factory.sequenceWithError()
-        case .publishSubjectExample:
-            observ = factory.publishSubjectExample()
-        case .behaviorSubjectExample:
-            observ = factory.behaviorSubjectExample()
-        case .replaySubjectExample:
-            observ = factory.replaySubjectExample()
-        case .variableExample:
-            observ = factory.variableExample()
-        case .publishRelayExample:
-            observ = factory.publishRelayExample().asObservable()
-        case .behaviorRelayExample:
-            observ = factory.behaviorRelayExample().asObservable()
-        case .mergeFilterExample:
-            observ = factory.mergeFilterExample()
-        }
+        let exampleClosure = RxExampleFactory.exampleClosure(forExample: rxExample)
+        let observ: Observable<String> = exampleClosure()
 
         let delay = Observable<Int>.interval(1.5, scheduler: MainScheduler.instance)
         let mainObservable = observ.catchErrorJustReturn("ERR")

@@ -46,7 +46,7 @@ class MainViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainCellID", for: indexPath)
 
-        cell.textLabel?.text = data[indexPath.row].rawValue
+        cell.textLabel?.text = String(describing: data[indexPath.row])
         cell.accessoryType = .disclosureIndicator
 
         return cell
