@@ -224,7 +224,7 @@ When using child view controllers, sometimes you need the children to "talk" to 
 
 A classic example is a Point of Sale application's register. A register might have a menu item picker on one side (child VC 1) and a cart on the right side (child VC 2). When the user picks a menu item, it should be added to the cart. Again, we could employ the delegate pattern or use a closure to link the two view controllers but RxSwift provides a more elegant and minimal solution - data binding.
 
-See our MVVM example here.
+See our MVVM with child view controllers example [here](https://github.com/siddarthkalra/RxSwift101/tree/master/RxSwift101/MVVM).
 
 ## Networking
 
