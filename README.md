@@ -204,7 +204,11 @@ Visit http://rxmarbles.com to get more visual examples on how other operators wo
 
 # Testing
 
-RxSwift provides a separate framework, RxTest, which provides an easy-to-use API for testing such as a `TestScheduler` class and, hot and cold obervables. Read more about how to use RxTest [here](http://adamborek.com/rxtests-rxactionsheet/).
+RxSwift provides a separate framework, RxTest, which provides an easy-to-use API for testing such as a `TestScheduler` class and, hot and cold obervables.
+
+See code examples [here](https://github.com/siddarthkalra/RxSwift101/blob/master/RxSwift101Tests/OrderCartViewModelSpec.swift).
+
+If you are interested in further details, please see this blog post [here](http://adamborek.com/rxtests-rxactionsheet/).
 
 # Common Use-cases for RxSwift
 
