@@ -9,6 +9,7 @@
 import Quick
 import Nimble
 import RxCocoa
+import RxSwift
 import RxTest
 @testable import RxSwift101
 
@@ -39,12 +40,14 @@ class OrderCartViewModelSpec: QuickSpec {
         describe("orderItemRelay") {
 
             it("emits events") {
+                let disposeBag = DisposeBag()
                 SharingScheduler.mock(scheduler: scheduler) {
                     let orderItemEvents = scheduler.record(source: sut.orderItemDriver)
 
-                    sut.orderItemRelay.accept("test1")
-                    sut.orderItemRelay.accept("test2")
-                    sut.orderItemRelay.accept("test3")
+                    scheduler
+                        .createHotObservable([next(0, "test1"), next(0, "test2"), next(0, "test3")])
+                        .bind(to: sut.orderItemRelay).disposed(by: disposeBag)
+
                     scheduler.start()
 
                     expect(orderItemEvents.events[0].value.element).to(beEmpty())
