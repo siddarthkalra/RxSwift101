@@ -24,7 +24,6 @@
 		C7A9CDBF21B8A1E900C9B3E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A9CDBD21B8A1E900C9B3E7 /* Main.storyboard */; };
 		C7A9CDC121B8A1EC00C9B3E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7A9CDC021B8A1EC00C9B3E7 /* Assets.xcassets */; };
 		C7A9CDC421B8A1EC00C9B3E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A9CDC221B8A1EC00C9B3E7 /* LaunchScreen.storyboard */; };
-		C7A9CDCF21B8A1EC00C9B3E7 /* RxSwift101Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9CDCE21B8A1EC00C9B3E7 /* RxSwift101Tests.swift */; };
 		C7A9CDE521B8A43600C9B3E7 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A9CDE221B8A43600C9B3E7 /* Quick.framework */; };
 		C7A9CDE621B8A43600C9B3E7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A9CDE321B8A43600C9B3E7 /* Nimble.framework */; };
 		C7A9CDE721B8A43600C9B3E7 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A9CDE421B8A43600C9B3E7 /* RxTest.framework */; };
@@ -37,6 +36,11 @@
 		C7A9CDF721B8A4B000C9B3E7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A9CDDA21B8A40A00C9B3E7 /* RxSwift.framework */; };
 		C7A9CDF821B8A4B000C9B3E7 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7A9CDDA21B8A40A00C9B3E7 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7A9CDFB21B8A4E800C9B3E7 /* Observables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9CDFA21B8A4E800C9B3E7 /* Observables.swift */; };
+		C7E1FA1721E2EE4C002A4710 /* OrderCartViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1FA1621E2EE4C002A4710 /* OrderCartViewModelSpec.swift */; };
+		C7E1FA1921E2F0D7002A4710 /* TestScheduler+MarbleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1FA1821E2F0D7002A4710 /* TestScheduler+MarbleTests.swift */; };
+		C7E1FA1B21E2F17E002A4710 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7A9CDE321B8A43600C9B3E7 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C7E1FA1C21E2F17E002A4710 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7A9CDE221B8A43600C9B3E7 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C7E1FA1D21E2F189002A4710 /* RxTest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7A9CDE421B8A43600C9B3E7 /* RxTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,18 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C7E1FA1A21E2F162002A4710 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C7E1FA1D21E2F189002A4710 /* RxTest.framework in CopyFiles */,
+				C7E1FA1B21E2F17E002A4710 /* Nimble.framework in CopyFiles */,
+				C7E1FA1C21E2F17E002A4710 /* Quick.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -87,7 +103,6 @@
 		C7A9CDC321B8A1EC00C9B3E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7A9CDC521B8A1EC00C9B3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7A9CDCA21B8A1EC00C9B3E7 /* RxSwift101Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift101Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C7A9CDCE21B8A1EC00C9B3E7 /* RxSwift101Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift101Tests.swift; sourceTree = "<group>"; };
 		C7A9CDD021B8A1EC00C9B3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7A9CDDA21B8A40A00C9B3E7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C7A9CDDB21B8A40A00C9B3E7 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
@@ -97,6 +112,8 @@
 		C7A9CDE321B8A43600C9B3E7 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		C7A9CDE421B8A43600C9B3E7 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		C7A9CDFA21B8A4E800C9B3E7 /* Observables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observables.swift; sourceTree = "<group>"; };
+		C7E1FA1621E2EE4C002A4710 /* OrderCartViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCartViewModelSpec.swift; sourceTree = "<group>"; };
+		C7E1FA1821E2F0D7002A4710 /* TestScheduler+MarbleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestScheduler+MarbleTests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,8 +213,9 @@
 		C7A9CDCD21B8A1EC00C9B3E7 /* RxSwift101Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C7A9CDCE21B8A1EC00C9B3E7 /* RxSwift101Tests.swift */,
 				C7A9CDD021B8A1EC00C9B3E7 /* Info.plist */,
+				C7E1FA1621E2EE4C002A4710 /* OrderCartViewModelSpec.swift */,
+				C7E1FA1821E2F0D7002A4710 /* TestScheduler+MarbleTests.swift */,
 			);
 			path = RxSwift101Tests;
 			sourceTree = "<group>";
@@ -244,6 +262,7 @@
 				C7A9CDC621B8A1EC00C9B3E7 /* Sources */,
 				C7A9CDC721B8A1EC00C9B3E7 /* Frameworks */,
 				C7A9CDC821B8A1EC00C9B3E7 /* Resources */,
+				C7E1FA1A21E2F162002A4710 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -340,7 +359,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7A9CDCF21B8A1EC00C9B3E7 /* RxSwift101Tests.swift in Sources */,
+				C7E1FA1921E2F0D7002A4710 /* TestScheduler+MarbleTests.swift in Sources */,
+				C7E1FA1721E2EE4C002A4710 /* OrderCartViewModelSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
