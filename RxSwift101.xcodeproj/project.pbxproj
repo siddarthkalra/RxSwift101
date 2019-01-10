@@ -41,6 +41,9 @@
 		C7E1FA1B21E2F17E002A4710 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7A9CDE321B8A43600C9B3E7 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7E1FA1C21E2F17E002A4710 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7A9CDE221B8A43600C9B3E7 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7E1FA1D21E2F189002A4710 /* RxTest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7A9CDE421B8A43600C9B3E7 /* RxTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C7E1FA1F21E6DE1D002A4710 /* TapSequenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1FA1E21E6DE1D002A4710 /* TapSequenceViewController.swift */; };
+		C7E1FA2121E6E821002A4710 /* ColorSequenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1FA2021E6E821002A4710 /* ColorSequenceViewController.swift */; };
+		C7E1FA2321E798DA002A4710 /* OptionalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1FA2221E798DA002A4710 /* OptionalType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +117,9 @@
 		C7A9CDFA21B8A4E800C9B3E7 /* Observables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observables.swift; sourceTree = "<group>"; };
 		C7E1FA1621E2EE4C002A4710 /* OrderCartViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCartViewModelSpec.swift; sourceTree = "<group>"; };
 		C7E1FA1821E2F0D7002A4710 /* TestScheduler+MarbleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestScheduler+MarbleTests.swift"; sourceTree = "<group>"; };
+		C7E1FA1E21E6DE1D002A4710 /* TapSequenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSequenceViewController.swift; sourceTree = "<group>"; };
+		C7E1FA2021E6E821002A4710 /* ColorSequenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSequenceViewController.swift; sourceTree = "<group>"; };
+		C7E1FA2221E798DA002A4710 /* OptionalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +167,8 @@
 				C7A9217421BA13CD00F04EEA /* RxExamplesViewController.swift */,
 				C75FA6D121DB041200351961 /* RxExample.swift */,
 				C75FA6DA21DD0A5C00351961 /* MainViewController.swift */,
+				C7E1FA1E21E6DE1D002A4710 /* TapSequenceViewController.swift */,
+				C7E1FA2021E6E821002A4710 /* ColorSequenceViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -202,6 +210,7 @@
 				C75FA6CD21D5C2A300351961 /* UI */,
 				C75FA6CC21D5C28F00351961 /* ObservableFactory */,
 				C7A9CDB921B8A1E900C9B3E7 /* AppDelegate.swift */,
+				C7E1FA2221E798DA002A4710 /* OptionalType.swift */,
 				C7A9CDBD21B8A1E900C9B3E7 /* Main.storyboard */,
 				C7A9CDC021B8A1EC00C9B3E7 /* Assets.xcassets */,
 				C7A9CDC221B8A1EC00C9B3E7 /* LaunchScreen.storyboard */,
@@ -340,6 +349,8 @@
 			files = (
 				C75FA6D221DB041200351961 /* RxExample.swift in Sources */,
 				C75FA6E121DDA7E500351961 /* OrderCartViewController.swift in Sources */,
+				C7E1FA2121E6E821002A4710 /* ColorSequenceViewController.swift in Sources */,
+				C7E1FA1F21E6DE1D002A4710 /* TapSequenceViewController.swift in Sources */,
 				C75FA6DB21DD0A5C00351961 /* MainViewController.swift in Sources */,
 				C75FA6DD21DDA6F900351961 /* UIViewController+ChildVC.swift in Sources */,
 				C75FA6DF21DDA79700351961 /* MenuItemPickerViewController.swift in Sources */,
@@ -349,6 +360,7 @@
 				C7A9CDBC21B8A1E900C9B3E7 /* ObservableSequenceController.swift in Sources */,
 				C7A9217521BA13CD00F04EEA /* RxExamplesViewController.swift in Sources */,
 				C75FA6D021D92FD600351961 /* Relays.swift in Sources */,
+				C7E1FA2321E798DA002A4710 /* OptionalType.swift in Sources */,
 				C7A9CDBA21B8A1E900C9B3E7 /* AppDelegate.swift in Sources */,
 				C7A9CDFB21B8A4E800C9B3E7 /* Observables.swift in Sources */,
 				C75FA6D421DC4FE400351961 /* Operators.swift in Sources */,

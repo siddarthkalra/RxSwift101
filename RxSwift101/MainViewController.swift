@@ -10,9 +10,11 @@ import UIKit
 
 class MainViewController: UITableViewController {
 
-    enum Data: String, CaseIterable {
+    enum Data: String, CaseIterable, CustomStringConvertible {
         case mvvm = "MVVM"
         case observables = "Observables"
+        case tapSequence = "Tap Sequence"
+        case colorSequence = "Color Sequence"
 
         var viewController: UIViewController {
             switch self {
@@ -21,7 +23,15 @@ class MainViewController: UITableViewController {
                 return RegisterViewController.init(viewModel: viewModel)
             case .observables:
                 return RxExamplesViewController(style: .grouped)
+            case .tapSequence:
+                return TapSequenceViewController()
+            case .colorSequence:
+                return ColorSequenceViewController()
             }
+        }
+
+        var description: String {
+            return rawValue
         }
     }
 
