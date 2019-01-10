@@ -15,18 +15,19 @@ The following are some of the common Cocoa APIs used for async programming:
 
 ## Problems with Async Code
 * Lacks determinism - order is not guaranteed
-* Shared Mutable State - this makes things inherently thread unsafe
+* Shared Mutable State - doesn't allow for local reasoning and makes things inherently thread unsafe
 * Imperative Programming - tell the computer exactly when and how to do things by using if, elseif, else, switch, while & for statements. Further, implementation details are exposed which can reduce readability
 * Unexpected Side Effects - shared mutable state and unclear imperative declarations can lead to unexpected side effects
 
 # RxSwift's Solution
 
-* Declarative Code - lets you define pieces of behavior with clear intent where implementation details are abstracted away and state is not shared. RxSwift runs these behaviors every time an event occurs and provide immutable and isolated data input. Now, you can work with async code that is sequential and deterministic , as if you were writing a synchronous for loop.
+* Declarative Code - lets you define pieces of behavior with clear intent where implementation details are abstracted away and state is not shared. RxSwift runs these behaviors every time an event occurs and provide immutable and isolated data input. Now, you can work with async code that is sequential and deterministic, as if you were writing a synchronous for loop.
 * Reactive Systems have the following properties:
   * responsive - keep the app up-to-date with the latest data
   * resilient - provide abilities for error recovery
   * elastic - can handle varied workload with features such as event throttling
   * message driven - message based communication which leads to isolation and reusability
+* RxSwift's implementation provides a simple API contract which provides complete decoupling between objects that need to share data
 
 # Observable Sequences
 
