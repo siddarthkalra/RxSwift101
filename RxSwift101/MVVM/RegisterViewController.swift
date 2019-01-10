@@ -42,7 +42,7 @@ private extension RegisterViewController {
 
         // setup databinding
         menuItemPickerViewModel.menuItemDriver
-            .drive(orderCartViewModel.orderItemRelay)
+            .drive(orderCartViewModel.newMenuItemRelay)
             .disposed(by: menuItemPickerViewModel.disposeBag)
 
         let menuItemPickerVC = MenuItemPickerViewController(viewModel: menuItemPickerViewModel)

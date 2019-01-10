@@ -13,6 +13,7 @@ import RxCocoa
 class OrderCartViewController: UITableViewController {
 
     private let viewModel: OrderCartViewModel
+    private var orderItems = [String]()
 
     required init(viewModel: OrderCartViewModel) {
         self.viewModel = viewModel
@@ -37,12 +38,12 @@ class OrderCartViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.rows
+        return rows
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "orderItemCellID", for: indexPath)
-        cell.textLabel?.text = viewModel.orderItemName(forIndexPath: indexPath)
+        cell.textLabel?.text = orderItemName(forIndexPath: indexPath)
         cell.backgroundColor = tableView.backgroundColor
 
         return cell
@@ -51,11 +52,18 @@ class OrderCartViewController: UITableViewController {
 
 private extension OrderCartViewController {
 
+    var rows: Int {
+        return orderItems.count
+    }
+
+    func orderItemName(forIndexPath indexPath: IndexPath) -> String {
+        return orderItems[indexPath.row]
+    }
+
     func setupBindings() {
-        viewModel.orderItemDriver
-            .skip(1)
-            .drive(onNext: { [unowned self] orderItem in
-                self.viewModel.orderItems.append(orderItem)
+        viewModel.reloadDriver
+            .drive(onNext: { [unowned self] orderItems in
+                self.orderItems = orderItems
                 self.tableView.reloadData()
             }).disposed(by: viewModel.disposeBag)
     }
@@ -65,17 +73,20 @@ private extension OrderCartViewController {
 class OrderCartViewModel {
 
     let disposeBag = DisposeBag()
+    let newMenuItemRelay = BehaviorRelay<String>(value: "")
 
-    let orderItemRelay = BehaviorRelay<String>(value: "")
-    private (set) lazy var orderItemDriver = orderItemRelay.asDriver()
+    private let orderItemsRelay = BehaviorRelay<[String]>(value: [])
+    private (set) lazy var reloadDriver = orderItemsRelay.asDriver()
 
-    var orderItems = [String]()
-
-    var rows: Int {
-        return orderItems.count
+    required init() {
+        newMenuItemRelay
+            .skip(1)
+            .withLatestFrom(orderItemsRelay, resultSelector: handleNewItems)
+            .bind(to: orderItemsRelay)
+            .disposed(by: disposeBag)
     }
 
-    func orderItemName(forIndexPath indexPath: IndexPath) -> String {
-        return orderItems[indexPath.row]
+    private var handleNewItems: (String, [String]) -> [String] = { newItem, old in
+        return old + [newItem]
     }
 }
