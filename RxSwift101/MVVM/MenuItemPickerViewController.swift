@@ -39,7 +39,7 @@ class MenuItemPickerViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuItemCellID", for: indexPath)
-        cell.textLabel?.text = viewModel.menuItemName(forIndexPath: indexPath)
+        cell.textLabel?.text = viewModel.menuItem(forIndexPath: indexPath)
 
         return cell
     }
@@ -51,8 +51,8 @@ class MenuItemPickerViewController: UITableViewController {
 
 class MenuItemPickerViewModel {
 
-    let menuItems = ["Eggs", "Waffles"]
-    private let menuItemRelay = PublishRelay<String>()
+    let menuItems: [MenuItem] = ["Eggs", "Waffles", "Pancakes", "Crepes"]
+    private let menuItemRelay = PublishRelay<MenuItem>()
 
     private (set) lazy var menuItemDriver = menuItemRelay.asDriver { _ in assertionFailure(); return .never() }
 
@@ -62,12 +62,12 @@ class MenuItemPickerViewModel {
         return menuItems.count
     }
 
-    func menuItemName(forIndexPath indexPath: IndexPath) -> String {
+    func menuItem(forIndexPath indexPath: IndexPath) -> MenuItem {
         return menuItems[indexPath.row]
     }
 
     func selectMenuItem(atIndexPath indexPath: IndexPath) {
-        let menuItem = menuItemName(forIndexPath: indexPath)
-        menuItemRelay.accept(menuItem)
+        let currentMenuItem = menuItem(forIndexPath: indexPath)
+        menuItemRelay.accept(currentMenuItem)
     }
 }

@@ -13,7 +13,7 @@ import RxCocoa
 class OrderCartViewController: UITableViewController {
 
     private let viewModel: OrderCartViewModel
-    private var orderItems = [String]()
+    private var orderItems = [OrderItem]()
 
     required init(viewModel: OrderCartViewModel) {
         self.viewModel = viewModel
@@ -43,7 +43,7 @@ class OrderCartViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "orderItemCellID", for: indexPath)
-        cell.textLabel?.text = orderItemName(forIndexPath: indexPath)
+        cell.textLabel?.text = orderItem(forIndexPath: indexPath)
         cell.backgroundColor = tableView.backgroundColor
 
         return cell
@@ -56,12 +56,12 @@ private extension OrderCartViewController {
         return orderItems.count
     }
 
-    func orderItemName(forIndexPath indexPath: IndexPath) -> String {
+    func orderItem(forIndexPath indexPath: IndexPath) -> OrderItem {
         return orderItems[indexPath.row]
     }
 
     func setupBindings() {
-        viewModel.reloadDriver
+        viewModel.orderItemsDriver
             .drive(onNext: { [unowned self] orderItems in
                 self.orderItems = orderItems
                 self.tableView.reloadData()
@@ -73,12 +73,12 @@ private extension OrderCartViewController {
 class OrderCartViewModel {
 
     let disposeBag = DisposeBag()
-    let newMenuItemRelay = BehaviorRelay<String>(value: "")
+    let newMenuItemRelay = BehaviorRelay<MenuItem>(value: "")
 
-    private let orderItemsRelay = BehaviorRelay<[String]>(value: [])
-    private (set) lazy var reloadDriver = orderItemsRelay.asDriver()
+    private let orderItemsRelay = BehaviorRelay<[OrderItem]>(value: [])
+    private (set) lazy var orderItemsDriver = orderItemsRelay.asDriver()
 
-    required init() {
+    init() {
         newMenuItemRelay
             .skip(1)
             .withLatestFrom(orderItemsRelay, resultSelector: handleNewItems)
@@ -86,7 +86,7 @@ class OrderCartViewModel {
             .disposed(by: disposeBag)
     }
 
-    private var handleNewItems: (String, [String]) -> [String] = { newItem, old in
-        return old + [newItem]
+    private var handleNewItems: (MenuItem, [OrderItem]) -> [OrderItem] = { newMenuItem, oldOrderItems in
+        return oldOrderItems + [newMenuItem]
     }
 }

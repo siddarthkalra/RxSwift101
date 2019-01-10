@@ -10,6 +10,9 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+typealias MenuItem = String
+typealias OrderItem = String
+
 class RegisterViewController: UIViewController {
 
     @IBOutlet weak var menuItemPickerView: UIView!
