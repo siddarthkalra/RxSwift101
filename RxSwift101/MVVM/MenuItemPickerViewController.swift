@@ -25,7 +25,6 @@ class MenuItemPickerViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "menuItemCellID")
         tableView.tableFooterView = UIView()
     }
 
@@ -38,10 +37,16 @@ class MenuItemPickerViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "menuItemCellID", for: indexPath)
-        cell.textLabel?.text = viewModel.menuItem(forIndexPath: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: "menuItemCellID")
+        if cell == nil {
+            cell = UITableViewCell(style: .value1, reuseIdentifier: "menuItemCellID")
+        }
 
-        return cell
+        let menuItem = viewModel.menuItem(forIndexPath: indexPath)
+        cell?.textLabel?.text = menuItem.0
+        cell?.detailTextLabel?.text = "$\(menuItem.1)"
+        
+        return cell!
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -51,7 +56,7 @@ class MenuItemPickerViewController: UITableViewController {
 
 class MenuItemPickerViewModel {
 
-    let menuItems: [MenuItem] = ["Eggs", "Waffles", "Pancakes", "Crepes"]
+    let menuItems: [MenuItem] = [("Eggs", 1.5), ("Waffles", 2.5), ("Pancakes", 3), ("Crepes", 5)]
     private let menuItemRelay = PublishRelay<MenuItem>()
 
     private (set) lazy var menuItemDriver = menuItemRelay.asDriver { _ in assertionFailure(); return .never() }

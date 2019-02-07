@@ -26,7 +26,6 @@ class OrderCartViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "orderItemCellID")
         tableView.tableFooterView = UIView()
         tableView.backgroundColor = UIColor(red: 250 / 255, green: 250 / 255, blue: 250 / 255, alpha: 1)
 
@@ -42,11 +41,17 @@ class OrderCartViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "orderItemCellID", for: indexPath)
-        cell.textLabel?.text = orderItem(forIndexPath: indexPath)
-        cell.backgroundColor = tableView.backgroundColor
+        var cell = tableView.dequeueReusableCell(withIdentifier: "orderItemCellID")
+        if cell == nil {
+            cell = UITableViewCell(style: .value1, reuseIdentifier: "orderItemCellID")
+        }
+        
+        let orderItem = self.orderItem(forIndexPath: indexPath)
+        cell?.textLabel?.text = orderItem.0
+        cell?.detailTextLabel?.text = "$\(orderItem.1)"
+        cell?.backgroundColor = tableView.backgroundColor
 
-        return cell
+        return cell!
     }
 }
 
@@ -73,7 +78,7 @@ private extension OrderCartViewController {
 class OrderCartViewModel {
 
     let disposeBag = DisposeBag()
-    let newMenuItemRelay = BehaviorRelay<MenuItem>(value: "")
+    let newMenuItemRelay = BehaviorRelay<MenuItem>(value: ("", 0))
 
     private let orderItemsRelay = BehaviorRelay<[OrderItem]>(value: [])
     private (set) lazy var orderItemsDriver = orderItemsRelay.asDriver()

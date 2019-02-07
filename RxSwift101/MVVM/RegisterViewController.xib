@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="RxSwift101" customModuleProvider="target">
             <connections>
                 <outlet property="menuItemPickerView" destination="hew-Ql-4C9" id="OLQ-Dc-3cE"/>
+                <outlet property="orderCartSummaryView" destination="nLy-fm-IXW" id="nba-tU-J1F"/>
                 <outlet property="orderCartView" destination="HkQ-Oz-BBI" id="9c8-jl-bNj"/>
                 <outlet property="view" destination="iN0-l3-epB" id="LQw-dP-Msn"/>
             </connections>
@@ -27,20 +28,30 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HkQ-Oz-BBI">
-                    <rect key="frame" x="542" y="20" width="292" height="1092"/>
+                    <rect key="frame" x="542" y="20" width="292" height="1004"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLy-fm-IXW">
+                    <rect key="frame" x="542" y="1024" width="292" height="88"/>
+                    <color key="backgroundColor" red="1" green="0.12488729752314476" blue="0.35053379957712516" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="88" id="eXT-in-liX"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="nLy-fm-IXW" firstAttribute="leading" secondItem="hew-Ql-4C9" secondAttribute="trailing" id="56p-Ta-SSj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HkQ-Oz-BBI" secondAttribute="trailing" id="D2F-Fl-Una"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="HkQ-Oz-BBI" secondAttribute="bottom" id="IfM-Wz-M8w"/>
                 <constraint firstItem="hew-Ql-4C9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="M23-8L-PPQ"/>
                 <constraint firstItem="HkQ-Oz-BBI" firstAttribute="leading" secondItem="hew-Ql-4C9" secondAttribute="trailing" id="W3G-cX-c5A"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nLy-fm-IXW" secondAttribute="trailing" id="Xhi-Ab-jWo"/>
                 <constraint firstItem="hew-Ql-4C9" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.65" id="fNw-nN-LBF"/>
                 <constraint firstItem="HkQ-Oz-BBI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gyL-Sf-NJ8"/>
                 <constraint firstItem="hew-Ql-4C9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="j8k-Ha-xbt"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hew-Ql-4C9" secondAttribute="bottom" id="qcA-ud-ugB"/>
+                <constraint firstItem="nLy-fm-IXW" firstAttribute="top" secondItem="HkQ-Oz-BBI" secondAttribute="bottom" id="rBB-GO-ZCS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nLy-fm-IXW" secondAttribute="bottom" id="zd2-M1-Oo0"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="138.84892086330936" y="154.85611510791367"/>

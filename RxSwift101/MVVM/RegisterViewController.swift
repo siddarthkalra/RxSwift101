@@ -10,14 +10,15 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-typealias MenuItem = String
-typealias OrderItem = String
+typealias MenuItem = (String, Decimal)
+typealias OrderItem = (String, Decimal)
 
 class RegisterViewController: UIViewController {
 
     @IBOutlet weak var menuItemPickerView: UIView!
     @IBOutlet weak var orderCartView: UIView!
-
+    @IBOutlet weak var orderCartSummaryView: UIView!
+    
     private let viewModel: RegisterViewModel
 
     required init(viewModel: RegisterViewModel) {
@@ -42,17 +43,25 @@ private extension RegisterViewController {
     func setupChildVCs() {
         let menuItemPickerViewModel = MenuItemPickerViewModel()
         let orderCartViewModel = OrderCartViewModel()
-
+        let orderCartSummaryViewModel = OrderCartSummaryViewModel()
+        
         // setup databinding
         menuItemPickerViewModel.menuItemDriver
             .drive(orderCartViewModel.newMenuItemRelay)
             .disposed(by: menuItemPickerViewModel.disposeBag)
 
+        menuItemPickerViewModel.menuItemDriver
+            .map { $0.1 } // get the price
+            .drive(orderCartSummaryViewModel.newValueRelay)
+            .disposed(by: menuItemPickerViewModel.disposeBag)
+        
         let menuItemPickerVC = MenuItemPickerViewController(viewModel: menuItemPickerViewModel)
         let orderCartVC = OrderCartViewController(viewModel: orderCartViewModel)
+        let orderCartSummaryVC = OrderCartSummaryViewController(viewModel: orderCartSummaryViewModel)
 
-        addChild(menuItemPickerVC, toSubview: menuItemPickerView, useSafeArea: false)
-        addChild(orderCartVC, toSubview: orderCartView, useSafeArea: false)
+        addChild(menuItemPickerVC, toSubview: menuItemPickerView)
+        addChild(orderCartVC, toSubview: orderCartView)
+        addChild(orderCartSummaryVC, toSubview: orderCartSummaryView)
     }
 
 }
