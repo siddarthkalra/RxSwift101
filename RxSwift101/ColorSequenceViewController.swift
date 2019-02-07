@@ -30,7 +30,7 @@ class ColorSequenceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Tap Sequence"
+        title = "Color Sequence"
         view.backgroundColor = .white
 
         setupViews()
