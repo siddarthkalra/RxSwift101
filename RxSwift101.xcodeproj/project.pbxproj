@@ -301,9 +301,11 @@
 				TargetAttributes = {
 					C7A9CDB521B8A1E900C9B3E7 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1150;
 					};
 					C7A9CDC921B8A1EC00C9B3E7 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1150;
 						TestTargetID = C7A9CDB521B8A1E900C9B3E7;
 					};
 				};
@@ -545,7 +547,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.touchbistro.RxSwift101;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -567,7 +569,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.touchbistro.RxSwift101;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -591,7 +593,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.touchbistro.RxSwift101Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RxSwift101.app/RxSwift101";
 			};
@@ -616,7 +618,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.touchbistro.RxSwift101Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RxSwift101.app/RxSwift101";
 			};
