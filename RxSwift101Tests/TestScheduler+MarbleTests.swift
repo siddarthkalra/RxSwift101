@@ -6,13 +6,13 @@ import RxSwift
 let resolution: TimeInterval = 0.2 // seconds
 
 extension TestableObserver {
-    var firstElement: E? {
+    var firstElement: Element? {
         return events.first!.value.element
     }
-    var lastElement: E? {
+    var lastElement: Element? {
         return events.last!.value.element
     }
-    func element(atIndex index: Int) -> E? {
+    func element(atIndex index: Int) -> Element? {
         return events[index].value.element
     }
 }
@@ -164,8 +164,8 @@ extension TestScheduler {
      - parameter source: Observable sequence to observe.
      - returns: Observer that records all events for observable sequence.
      */
-    func record<O: ObservableConvertibleType>(source: O) -> TestableObserver<O.E> {
-        let observer = self.createObserver(O.E.self)
+    func record<O: ObservableConvertibleType>(source: O) -> TestableObserver<O.Element> {
+        let observer = self.createObserver(O.Element.self)
         let disposable = source.asObservable().bind(to: observer)
         self.scheduleAt(100000) {
             disposable.dispose()

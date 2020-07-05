@@ -62,7 +62,7 @@ private extension ObservableSequenceController {
         let exampleClosure = RxExampleFactory.exampleClosure(forExample: rxExample)
         let observ: Observable<String> = exampleClosure()
 
-        let delay = Observable<Int>.interval(1.5, scheduler: MainScheduler.instance)
+        let delay = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
         let mainObservable = observ.catchErrorJustReturn("ERR")
 
         return Observable

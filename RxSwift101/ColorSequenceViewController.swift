@@ -85,9 +85,9 @@ private extension ColorSequenceViewController {
 
 }
 
-extension ObservableType where E: OptionalType {
+extension ObservableType where Element: OptionalType {
 
-    func filterNil() -> Observable<E.Wrapped> {
+    func filterNil() -> Observable<Element.Wrapped> {
         return flatMap { Observable.from(optional: $0.asOptional) }
     }
 
