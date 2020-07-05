@@ -6,13 +6,13 @@ import RxSwift
 let resolution: TimeInterval = 0.2 // seconds
 
 extension TestableObserver {
-    var firstElement: E? {
+    var firstElement: Element? {
         return events.first!.value.element
     }
-    var lastElement: E? {
+    var lastElement: Element? {
         return events.last!.value.element
     }
-    func element(atIndex index: Int) -> E? {
+    func element(atIndex index: Int) -> Element? {
         return events[index].value.element
     }
 }
@@ -88,21 +88,21 @@ extension TestScheduler {
 
      - returns: Observable sequence specified by timeline and values.
      */
-    func createObservable<T>(timeline: String, values: [String: T], errors: [String: Swift.Error] = [:]) -> Observable<T> {
-        let events = self.parseEventsAndTimes(timeline: timeline, values: values, errors: errors)
-        return createObservable(events)
-    }
-
-    /**
-     Creates observable for marble tests.
-
-     - parameter events: Recorded events to replay.
-
-     - returns: Observable sequence specified by timeline and values.
-     */
-    func createObservable<T>(_ events: [Recorded<Event<T>>]) -> Observable<T> {
-        return createObservable([events])
-    }
+//    func createObservable<T>(timeline: String, values: [String: T], errors: [String: Swift.Error] = [:]) -> Observable<T> {
+//        let events = self.parseEventsAndTimes(timeline: timeline, values: values, errors: errors)
+//        return createObservable(events)
+//    }
+//
+//    /**
+//     Creates observable for marble tests.
+//
+//     - parameter events: Recorded events to replay.
+//
+//     - returns: Observable sequence specified by timeline and values.
+//     */
+//    func createObservable<T>(_ events: [Recorded<Event<T>>]) -> Observable<T> {
+//        return createObservable([events])
+//    }
 
     /**
      Creates observable for marble tests.
@@ -114,27 +114,27 @@ extension TestScheduler {
 
      - returns: Observable sequence specified by timeline and values.
      */
-    func createObservable<T>(_ events: [[Recorded<Event<T>>]]) -> Observable<T> {
-        var attemptCount = 0
-        print("created for \(events)")
-
-        return Observable.create { observer in
-            if attemptCount >= events.count {
-                fatalError("This is attempt # \(attemptCount + 1), but timeline only allows \(events.count).\n\(events)")
-            }
-
-            let scheduledEvents = events[attemptCount].map { event in
-                return self.scheduleRelative((), dueTime: resolution * TimeInterval(event.time)) { _ in
-                    observer.on(event.value)
-                    return  Disposables.create()
-                }
-            }
-
-            attemptCount += 1
-
-            return Disposables.create(scheduledEvents)
-        }
-    }
+//    func createObservable<T>(_ events: [[Recorded<Event<T>>]]) -> Observable<T> {
+//        var attemptCount = 0
+//        print("created for \(events)")
+//
+//        return Observable.create { observer in
+//            if attemptCount >= events.count {
+//                fatalError("This is attempt # \(attemptCount + 1), but timeline only allows \(events.count).\n\(events)")
+//            }
+//
+//            let scheduledEvents = events[attemptCount].map { event in
+//                return self.scheduleRelative((), dueTime: resolution * TimeInterval(event.time)) { _ in
+//                    observer.on(event.value)
+//                    return  Disposables.create()
+//                }
+//            }
+//
+//            attemptCount += 1
+//
+//            return Disposables.create(scheduledEvents)
+//        }
+//    }
 
     /**
      Enables simple construction of mock implementations from marble timelines.
@@ -150,13 +150,13 @@ extension TestScheduler {
      - returns: Implementation of method that accepts arguments with parameter `Arg` and returns observable sequence
      with parameter `Ret`.
      */
-    func mock<Arg, Ret>(values: [String: Ret], errors: [String: Swift.Error] = [:], timelineSelector: @escaping (Arg) -> String) -> (Arg) -> Observable<Ret> {
-        return { (parameters: Arg) -> Observable<Ret> in
-            let timeline = timelineSelector(parameters)
-
-            return self.createObservable(timeline: timeline, values: values, errors: errors)
-        }
-    }
+//    func mock<Arg, Ret>(values: [String: Ret], errors: [String: Swift.Error] = [:], timelineSelector: @escaping (Arg) -> String) -> (Arg) -> Observable<Ret> {
+//        return { (parameters: Arg) -> Observable<Ret> in
+//            let timeline = timelineSelector(parameters)
+//
+//            return self.createObservable(timeline: timeline, values: values, errors: errors)
+//        }
+//    }
 
     /**
      Builds testable observer for s specific observable sequence, binds it's results and sets up disposal.
@@ -164,8 +164,8 @@ extension TestScheduler {
      - parameter source: Observable sequence to observe.
      - returns: Observer that records all events for observable sequence.
      */
-    func record<O: ObservableConvertibleType>(source: O) -> TestableObserver<O.E> {
-        let observer = self.createObserver(O.E.self)
+    func record<O: ObservableConvertibleType>(source: O) -> TestableObserver<O.Element> {
+        let observer = self.createObserver(O.Element.self)
         let disposable = source.asObservable().bind(to: observer)
         self.scheduleAt(100000) {
             disposable.dispose()

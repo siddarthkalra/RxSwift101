@@ -45,7 +45,7 @@ class OrderCartViewModelSpec: QuickSpec {
                     let orderItemEvents = scheduler.record(source: sut.orderItemsDriver)
 
                     scheduler
-                        .createHotObservable([next(0, "test1"), next(0, "test2"), next(0, "test3")])
+                        .createHotObservable([.next(0, "test1"), .next(0, "test2"), .next(0, "test3")])
                         .bind(to: sut.newMenuItemRelay).disposed(by: disposeBag)
 
                     scheduler.start()
