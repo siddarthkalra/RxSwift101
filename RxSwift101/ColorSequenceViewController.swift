@@ -77,7 +77,7 @@ private extension ColorSequenceViewController {
         colorView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(colorView)
 
-        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: colorView.bottomAnchor, constant: -10).isActive = true
+        view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: colorView.bottomAnchor, constant: 10).isActive = true
         view.safeAreaLayoutGuide.leftAnchor.constraint(equalTo: colorView.leftAnchor, constant: -10).isActive = true
         view.safeAreaLayoutGuide.rightAnchor.constraint(equalTo: colorView.rightAnchor, constant: 10).isActive = true
         colorView.heightAnchor.constraint(equalToConstant: 200).isActive = true
